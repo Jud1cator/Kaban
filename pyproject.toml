@@ -1,0 +1,13 @@
+[tool.isort]
+profile = 'black'
+line_length = 120
+py_version = 38
+skip = [".gitignore", ".dockerignore"]
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+# Black skips changing single quotes to double ones
+skip-string-normalization = true
+experimental-string-processing = true
+verbose = true
