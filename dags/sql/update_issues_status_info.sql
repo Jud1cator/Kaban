@@ -38,7 +38,7 @@ select
 	ti.id as issue_id,
 	ti.team_id as team_id,
 	si.status_id as status_id,
-	'{{ data_interval_end }}'::timestamptz as started_at
+	'{{ data_interval_end }}'::timestamptz as started_at,
 	'{{ data_interval_end }}'::timestamptz as updated_at
 from
 	team_issues ti
