@@ -43,6 +43,6 @@ select
 from
 	team_issues ti
 	inner join status_issues si on ti.id = si.id
-on conflict (issue_id, status_id) do update
+on conflict (issue_id, status_id, started_at) do update
 set
-	updated_at = EXCLUDED.started_at;
+	updated_at = EXCLUDED.updated_at;
