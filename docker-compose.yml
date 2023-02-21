@@ -57,8 +57,8 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    PYTHONPATH: '/opt/airflow/scripts'
+    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pydantic}
+    PYTHONPATH: '/opt/airflow/scripts/gitlab_api'
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
@@ -81,8 +81,12 @@ services:
       POSTGRES_DB: kaban_db
     volumes:
       - gitlab-postgres-db-volume:/var/lib/postgresql/data
+      - ./dags/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    expose:
+      - "5433"
     ports:
-      - "5432:5432"
+      - "5433:5433"
+    command: -p 5433
     healthcheck:
       test: ["CMD", "pg_isready", "-d", "kaban_db", "-U", "kaban"]
       interval: 5s
