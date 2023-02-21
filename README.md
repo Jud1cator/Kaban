@@ -3,11 +3,11 @@
 Kaban is an ETL tool for GitLab issues: it tracks time which issues spend in particular status defined by labels and saves that info in local database, because there is no other way to get that time from GitLab API :)
 
 ## To run locally:
-1. `mkdir -p ./logs ./plugins`
-2. `echo -e "AIRFLOW_UID=$(id -u)" > .env`
-3. `echo -e "GITLAB_URL=https://gitlab.yourdomain.com" > .env`
-4. `echo -e "GITLAB_API_TOKEN=yourgitlabapireadtoken" > .env`
-5. `docker compose up -d`
+1. Create some directories for Airflow: `mkdir -p ./logs ./plugins`
+2. Add variable for Airflow: `echo -e "AIRFLOW_UID=$(id -u)" >> .env`
+3. Add variable with your gitlab instance URL: `echo -e "GITLAB_URL=https://gitlab.yourdomain.com" >> .env`
+4. Add variable with your gitlab API read token: `echo -e "GITLAB_API_TOKEN=yourgitlabapireadtoken" >> .env`
+5. Run all services: `docker compose up -d`
 6. Setup postgres connection in Airflow:
 - host: gitlab-postgres
 - port: 5433
