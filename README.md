@@ -1,5 +1,7 @@
 # Kaban
-Kaban is an ETL tool for GitLab issues: it tracks time which issues spend in particular status defined by labels and saves that info in local database, because there is no other way to get that time from GitLab API :)
+Kaban provides storage & defines ETL process for GitLab issues.
+
+Particularly, it tracks time which issues spend in particular status defined by labels and saves that info in local database, because there is no other way to get that time from GitLab API :)
 
 ## To run locally:
 1. Create some directories for Airflow: `mkdir -p ./logs ./plugins`
