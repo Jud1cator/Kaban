@@ -3,13 +3,14 @@ with issues_labels as (
 		id,
 		title,
 		state,
-		(json_array_elements(labels)->>'id')::int as label_id
+		(json_array_elements(labels)->>'id')::int as label_id, 
+		labels
 	from
 		issues
 ),
 team_issues as (
 	select
-		il.id, il.title, t.id as team_id
+		il.id, il.title, il.state, t.id as team_id, il.labels
 	from
 		issues_labels il
 		inner join team_labels tl on il.label_id = tl.id
@@ -26,6 +27,15 @@ status_issues as (
 		issues_labels il
 		inner join status_labels sl on il.label_id = sl.id
 		inner join issue_statuses iss on iss.label_id = sl.id
+	union
+	select
+		distinct
+		id,
+		6 as status_id
+	from
+		team_issues
+	where
+		state = 'closed'
 ),
 last_update_issue_statuses as (
 	select
