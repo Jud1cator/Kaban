@@ -1,6 +1,6 @@
 # Kaban
-Kaban provides storage & defines ETL process for GitLab issues.
-
+Kaban provides storage for GitLab issues & defines ETL process to update their status.
+##
 Particularly, it allows time tracking for issues in each status defined by labels, and saves that info in local database. Up to date, there is no other way to get that time from GitLab API :)
 
 ## To run locally:
