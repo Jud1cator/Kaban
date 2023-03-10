@@ -53,7 +53,7 @@ create table if not exists issues_status_transition (
 	status_id int4,
 	started_at timestamptz,
 	updated_at timestamptz,
-	primary key (issue_id, status_id)
+	primary key (issue_id, status_id, started_at)
 );
 
 
