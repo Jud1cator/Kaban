@@ -1,8 +1,9 @@
 # Kaban
-Kaban provides storage for GitLab issues & defines ETL process to update their status.
+Kaban allows to track GitLab issues status transitions (defined by lists/labels) and collect kanban metrics.
 
-##
 Particularly, it allows time tracking for issues in each status defined by labels, and saves that info in local database. Up to date, there is no other way to get that time from GitLab API :)
+
+Tools used: PostgreSQL, Airflow
 
 ## To run locally:
 1. Create some directories for Airflow: `mkdir -p ./logs ./plugins`
