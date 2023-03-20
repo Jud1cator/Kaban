@@ -47,13 +47,14 @@ create table if not exists issue_statuses (
 
 -- Gitlab API does not have a way to track issues time spent in a list (status).
 -- Issues can be frequently queried to update their status.
-create table if not exists issues_status_transition (
-	issue_id int4,
-	team_id int4,
-	status_id int4,
-	started_at timestamptz,
-	updated_at timestamptz,
-	primary key (issue_id, status_id, started_at)
+CREATE TABLE public.issues_status_transition (
+	issue_id int4 NOT NULL,
+	team_id int4 NULL,
+	status_id int4 NOT NULL,
+	started_at timestamptz NOT NULL,
+	updated_at timestamptz NULL,
+	CONSTRAINT issues_status_transition_check CHECK ((started_at <= updated_at)),
+	CONSTRAINT issues_status_transition_pk PRIMARY KEY (issue_id, status_id, started_at)
 );
 
 
