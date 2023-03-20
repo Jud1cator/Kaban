@@ -1,14 +1,14 @@
 with issue_cycle_time as (
 	select
 		issue_id,
-		date_trunc('day', opened_at - closed_at) + '1 day'::interval as cycle_time
+		date_trunc('day', closed_at - opened_at) + '1 day'::interval as cycle_time
 	from (
 		select
 			issue_id,
 			status_id,
 			first_value(status_id) over (partition by issue_id order by status_id) as first_status,
-			max(started_at) over (partition by issue_id) as opened_at,
-			min(started_at) over (partition by issue_id) as closed_at
+			min(started_at) over (partition by issue_id) as opened_at,
+			max(started_at) over (partition by issue_id) as closed_at
 		from
 			issues_status_transition
 	)t
