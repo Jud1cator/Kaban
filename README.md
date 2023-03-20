@@ -1,7 +1,5 @@
 # Kaban
-Kaban allows to track GitLab issues status transitions (defined by lists/labels) and collect kanban metrics.
-
-Particularly, it allows time tracking for issues in each status defined by labels, and saves that info in local database. Up to date, there is no other way to get that time from GitLab API :)
+Kaban allows to track GitLab issues status transitions (defined by lists/labels) and collect kanban metrics. For example, you may create labels such as 'In progress', 'Awaiting review', 'Staging' and track time issue spent in each status. Up to date, there is no other way to get that time from GitLab API :)
 
 Tools used: PostgreSQL, Airflow
 
