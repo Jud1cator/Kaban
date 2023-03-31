@@ -19,3 +19,8 @@ Tools used: PostgreSQL, Airflow
 7. Add `GITLAB_URL` and `GITLAB_API_TOKEN` variables to Airflow
 8. Enable dag to start collecting info about issues statuses (like your manager usually does)
 9. TODO: connect kaban_db to some BI tool and build some fancy project management dashboard 
+
+## Grafana dashboard example
+SQL queries for each graph are available in `analytics/scripts`
+![image](https://user-images.githubusercontent.com/22914495/229174347-f8413737-89b8-41b8-8dfc-8d6ae2cff17f.png)
+
